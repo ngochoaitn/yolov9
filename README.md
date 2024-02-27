@@ -2,7 +2,7 @@
 Sample: https://colab.research.google.com/drive/1k30YTlNdtREe0b7mewApNvLHs3-Cl4T2#scrollTo=6bfZXR4jNdJr
 
 ```shell
-# test detect (on mac air M1)
+# test detect (on mac air M1) python 3.10.8
 pip install -r requirements.txt -q
 pip install -q roboflow
 wget https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c.pt 
@@ -11,7 +11,11 @@ python detect.py --weights yolov9-c.pt --conf 0.1 --source testimage.png
 ```
 
 ```shell
-# test train (on mac air M1)
+# test train (on mac air M1) python 3.10.8
+python3 -m pip install Pillow==9.5.0
+# nvidia GTX 980 (Cài thêm CUDA toolkit 11.8)
+python3 -m pip install torch==2.0.0+cu118 torchvision==0.15.0+cu118 torchaudio==2.0.0+cu118 -f https://download.pytorch.org/whl/torch_stable.html
+
 python train_dual.py --workers 8 --batch 4 --data data/dau_mat/data.yaml --img 640 --cfg models/detect/yolov9-c-custom.yaml --weights yolov9-c.pt --name yolov9-c --hyp data/hyps/hyp.scratch-high.yaml --min-items 0 --epochs 500 --close-mosaic 15
 python detect.py --weights runs/train/yolov9-c/weights/best.pt --conf 0.99 --source test-img-dau-mat.jpg
 ```

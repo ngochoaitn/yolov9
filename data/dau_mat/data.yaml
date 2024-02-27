@@ -3,7 +3,7 @@ val: data/dau_mat/train/images
 test: data/dau_mat/train/images
 
 nc: 4
-names: ['mat', 'mat doc', 'mat doc 2', 'mat nghieng']
+names: ['mat', 'matdoc', 'matdoc2', 'matnghieng']
 
 roboflow:
   workspace: test-train-yolo

@@ -1,0 +1,13 @@
+train: data/dau_mat/train/images
+val: data/dau_mat/train/images
+test: data/dau_mat/train/images
+
+nc: 4
+names: ['mat', 'mat doc', 'mat doc 2', 'mat nghieng']
+
+roboflow:
+  workspace: test-train-yolo
+  project: yolo-data-1g9jm
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/test-train-yolo/yolo-data-1g9jm/dataset/1

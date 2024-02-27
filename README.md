@@ -1,6 +1,21 @@
 # YOLOv9
 Sample: https://colab.research.google.com/drive/1k30YTlNdtREe0b7mewApNvLHs3-Cl4T2#scrollTo=6bfZXR4jNdJr
-Implementation of paper - [YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information](https://arxiv.org/abs/2402.13616)
+
+```shell
+# test detect (on mac air M1)
+pip install -r requirements.txt -q
+pip install -q roboflow
+wget https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c.pt 
+wget -O testimage.png https://cdn.tuoitre.vn/471584752817336320/2023/2/5/base64-1675580636737964496802.png
+python detect.py --weights yolov9-c.pt --conf 0.1 --source testimage.png
+```
+
+```shell
+# test train (on mac air M1)
+python train_dual.py --workers 8 --batch 4 --data data/dau_mat/data.yaml --img 640 --cfg models/detect/yolov9-c-custom.yaml --weights yolov9-c.pt --name yolov9-c --hyp data/hyps/hyp.scratch-high.yaml --min-items 0 --epochs 500 --close-mosaic 15
+python detect.py --weights runs/train/yolov9-c/weights/best.pt --conf 0.99 --source test-img-dau-mat.jpg
+```
+<p>Implementation of paper - [YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information](https://arxiv.org/abs/2402.13616)
 
 <div align="center">
     <a href="./">
